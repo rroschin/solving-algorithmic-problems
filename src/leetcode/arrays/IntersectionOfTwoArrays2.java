@@ -35,7 +35,7 @@ class IntersectionOfTwoArrays2 {
 
             done = (i1 == (lnums1) || i2 == (lnums2));
         }
-        
+
         return Arrays.copyOfRange(intersection, 0, f);
     }
 
