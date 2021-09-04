@@ -5,8 +5,49 @@ import java.util.Set;
 
 class ValidSudoku {
 
+    public static boolean isValidSudokuSimpleSet(char[][] board) {
+        Set<String> seen = new HashSet<>();
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                char cur = board[i][j];
+                if (cur != '.') {
+                    if (!seen.add(cur + " added in row " + i) ||
+                        !seen.add(cur + " added in col " + j) ||
+                        !seen.add(cur + " added in sub-matrix " + i / 3 + "-" + j / 3)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
     public static boolean isValidSudokuWithBitwise(char[][] board) {
-        //TODO do it!
+        int[] row = new int[9];
+        int[] col = new int[9];
+        int[] blk = new int[9];
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                char c = board[i][j];
+                if (c == '.')
+                    continue;
+                int bit = 1 << (c - '1');
+
+                if ((row[i] & bit) == bit)
+                    return false;
+                row[i] |= bit;
+
+                if ((col[j] & bit) == bit)
+                    return false;
+                col[j] |= bit;
+
+                final int sq = 3 * (i / 3) + j / 3;
+                if ((blk[sq] & bit) == bit)
+                    return false;
+                blk[sq] |= bit;
+            }
+        }
         return true;
     }
 
@@ -84,8 +125,8 @@ class ValidSudoku {
                         { '.', '.', '.', '.', '8', '.', '.', '7', '9' }
                 };
 
-        System.out.println(isValidSudoku(validBoard));
-        System.out.println(isValidSudoku(invalidBoard));
+        System.out.println(isValidSudokuWithBitwise(validBoard));
+        System.out.println(isValidSudokuWithBitwise(invalidBoard));
 
         char[][] invalidBoard2 = {
                 { '.', '.', '.', '.', '5', '.', '.', '1', '.' },
@@ -98,6 +139,6 @@ class ValidSudoku {
                 { '.', '2', '.', '9', '.', '.', '.', '.', '.' },
                 { '.', '.', '4', '.', '.', '.', '.', '.', '.' }
         };
-        System.out.println(isValidSudoku(invalidBoard2));
+        System.out.println(isValidSudokuWithBitwise(invalidBoard2));
     }
 }
