@@ -107,7 +107,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-//        JUnitCore.main("Solution");
+//        JUnitCore.main("HasCycle");
 
     }
 
