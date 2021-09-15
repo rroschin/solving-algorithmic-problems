@@ -74,16 +74,16 @@ public class VotingSystems {
 
         // test case 6
         final Map<List<String>, Integer> case6 = new HashMap<>();
-                case6.putAll(Map.of(List.of("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"), 3,
-                       List.of("F", "M", "A", "D", "W", "J", "C", "Z", "R", "E", "Y", "P", "H", "V", "G", "K", "Q", "L", "S", "B", "X", "I", "U", "T", "O", "N"), 5,
-                       List.of("V", "Y", "F", "C", "I", "D", "P", "G", "K", "N", "S", "R", "A", "Q", "O", "J", "U", "W", "E", "Z", "B", "M", "X", "T", "H", "L"), 2,
-                       List.of("U", "N", "L", "J", "V", "Y", "D", "M", "S", "X", "E", "B", "A", "F", "Z", "I", "T", "Q", "O", "C", "P", "H", "G", "R", "W", "K"), 3,
-                       List.of("U", "T", "R", "I", "G", "K", "F", "V", "D", "O", "L", "P", "C", "Q", "S", "H", "X", "Y", "W", "M", "N", "E", "A", "J", "B", "Z"), 1,
-                       List.of("A", "F", "X", "O", "G", "B", "W", "C", "L", "S", "D", "H", "R", "P", "J", "Q", "Y", "K", "U", "M", "V", "N", "T", "Z", "I", "E"), 2,
-                       List.of("A", "P", "K", "F", "M", "J", "Z", "H", "U", "Q", "E", "W", "X", "V", "G", "R", "C", "B", "Y", "N", "T", "L", "I", "D", "S", "O"), 6,
-                       List.of("C", "G", "D", "P", "V", "L", "A", "H", "J", "N", "Q", "Y", "S", "O", "T", "E", "R", "Z", "U", "F", "W", "X", "K", "B", "I", "M"), 9,
-                       List.of("L", "E", "G", "D", "A", "B", "Z", "K", "J", "R", "W", "U", "I", "O", "X", "P", "Y", "F", "H", "N", "T", "Q", "C", "S", "M", "V"), 2,
-                       List.of("N", "G", "S", "U", "V", "Z", "D", "R", "W", "B", "J", "K", "E", "Q", "O", "A", "Y", "L", "C", "H", "T", "X", "M", "F", "P", "I"), 7));
+        case6.putAll(Map.of(List.of("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"), 3,
+                            List.of("F", "M", "A", "D", "W", "J", "C", "Z", "R", "E", "Y", "P", "H", "V", "G", "K", "Q", "L", "S", "B", "X", "I", "U", "T", "O", "N"), 5,
+                            List.of("V", "Y", "F", "C", "I", "D", "P", "G", "K", "N", "S", "R", "A", "Q", "O", "J", "U", "W", "E", "Z", "B", "M", "X", "T", "H", "L"), 2,
+                            List.of("U", "N", "L", "J", "V", "Y", "D", "M", "S", "X", "E", "B", "A", "F", "Z", "I", "T", "Q", "O", "C", "P", "H", "G", "R", "W", "K"), 3,
+                            List.of("U", "T", "R", "I", "G", "K", "F", "V", "D", "O", "L", "P", "C", "Q", "S", "H", "X", "Y", "W", "M", "N", "E", "A", "J", "B", "Z"), 1,
+                            List.of("A", "F", "X", "O", "G", "B", "W", "C", "L", "S", "D", "H", "R", "P", "J", "Q", "Y", "K", "U", "M", "V", "N", "T", "Z", "I", "E"), 2,
+                            List.of("A", "P", "K", "F", "M", "J", "Z", "H", "U", "Q", "E", "W", "X", "V", "G", "R", "C", "B", "Y", "N", "T", "L", "I", "D", "S", "O"), 6,
+                            List.of("C", "G", "D", "P", "V", "L", "A", "H", "J", "N", "Q", "Y", "S", "O", "T", "E", "R", "Z", "U", "F", "W", "X", "K", "B", "I", "M"), 9,
+                            List.of("L", "E", "G", "D", "A", "B", "Z", "K", "J", "R", "W", "U", "I", "O", "X", "P", "Y", "F", "H", "N", "T", "Q", "C", "S", "M", "V"), 2,
+                            List.of("N", "G", "S", "U", "V", "Z", "D", "R", "W", "B", "J", "K", "E", "Q", "O", "A", "Y", "L", "C", "H", "T", "X", "M", "F", "P", "I"), 7));
         case6.putAll(Map.of(List.of("V", "P", "M", "S", "K", "D", "W", "O", "I", "B", "L", "Y", "C", "G", "X", "N", "Z", "H", "T", "A", "R", "E", "Q", "J", "F", "U"), 8,
                             List.of("K", "D", "U", "V", "T", "N", "A", "H", "L", "I", "S", "J", "P", "C", "Z", "M", "Y", "B", "W", "O", "R", "Q", "E", "F", "X", "G"), 4,
                             List.of("L", "X", "S", "J", "Q", "M", "A", "K", "Z", "T", "F", "W", "H", "D", "V", "G", "E", "C", "P", "O", "N", "R", "U", "B", "I", "Y"), 8,
