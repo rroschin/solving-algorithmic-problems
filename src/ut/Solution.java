@@ -47,9 +47,55 @@ import java.util.List;
 //import org.junit.runner.*;
 //import static org.junit.Assert.*;
 
-
 // Tests
 public class Solution {
+    public Solution() {
+    }
+
+    public static void main(String[] args) {
+        //        JUnitCore.main("HasCycle");
+
+    }
+
+    //Step 2
+    //    @Test
+    public void longen_ValidShortUrl_ReturnsOriginalUrl() {
+        //given
+        UrlShortener shortener = new UrlShortener();
+        String expectedUrl = "http://cutekittens.com/specialoffer";
+        String shortUrl = shortener.shorten(expectedUrl);
+
+        //when
+        String actualUrl = shortener.longen(shortUrl);
+
+        //then
+        //        assertEquals(expectedUrl, actualUrl);
+    }
+
+    //Step 0
+    //    @Test
+    public void validate_ValidUrl_ValidationPasses() { //TODO add invalid input test case: null, "", "    "
+        //given
+        String url = "http://cutekittens.com/specialoffer";
+        //when
+        boolean isValid = new UrlShortener().validate(url);
+        //then
+        //        assertTrue(isValid);
+    }
+
+    //Step 1
+    //    @Test
+    public void shorten_ValidUrl_ReturnsShortUrl() {
+        //given
+        String originalUrl = "http://cutekittens.com/specialoffer";
+        String expectedShortUrl = "http://later.ly/1";
+        UrlShortener shortener = new UrlShortener();
+        //when
+        String shortUrl = shortener.shorten(originalUrl);
+        //then
+        //        assertEquals(expectedShortUrl, shortUrl);
+    }
+
     // Implementation
     public class UrlShortener {
 
@@ -66,10 +112,9 @@ public class Solution {
 
         /**
          * TODO add javadoc
-
-         1. http://cutekittens.com/specialoffer -> http://later.ly/ljsdfksj
-         2. http://cutekittens.com/specialoffer -> http://later.ly/hdfodwco
-
+         * <p>
+         * 1. http://cutekittens.com/specialoffer -> http://later.ly/ljsdfksj
+         * 2. http://cutekittens.com/specialoffer -> http://later.ly/hdfodwco
          */
         public String shorten(final String url) {
             urls.add(url);
@@ -92,63 +137,13 @@ public class Solution {
             }
 
             //2 - http://later.ly/100
-            if (urls.size() < idx)  {
+            if (urls.size() < idx) {
                 throw new IllegalArgumentException("wrong url: " + url);
             }
 
             return urls.get(idx - 1);
         }
 
-
-    }
-
-
-    public Solution() {
-    }
-
-    public static void main(String[] args) {
-//        JUnitCore.main("HasCycle");
-
-    }
-
-    //Step 2
-//    @Test
-    public void longen_ValidShortUrl_ReturnsOriginalUrl() {
-        //given
-        UrlShortener shortener = new UrlShortener();
-        String expectedUrl = "http://cutekittens.com/specialoffer";
-        String shortUrl = shortener.shorten(expectedUrl);
-
-        //when
-        String actualUrl = shortener.longen(shortUrl);
-
-        //then
-//        assertEquals(expectedUrl, actualUrl);
-    }
-
-    //Step 0
-//    @Test
-    public void validate_ValidUrl_ValidationPasses() { //TODO add invalid input test case: null, "", "    "
-        //given
-        String url = "http://cutekittens.com/specialoffer";
-        //when
-        boolean isValid = new UrlShortener().validate(url);
-        //then
-//        assertTrue(isValid);
-    }
-
-
-    //Step 1
-//    @Test
-    public void shorten_ValidUrl_ReturnsShortUrl() {
-        //given
-        String originalUrl = "http://cutekittens.com/specialoffer";
-        String expectedShortUrl = "http://later.ly/1";
-        UrlShortener shortener = new UrlShortener();
-        //when
-        String shortUrl = shortener.shorten(originalUrl);
-        //then
-//        assertEquals(expectedShortUrl, shortUrl);
     }
 
 }
