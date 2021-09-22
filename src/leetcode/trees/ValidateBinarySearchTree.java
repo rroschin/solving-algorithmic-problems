@@ -16,19 +16,23 @@ class ValidateBinarySearchTree {
     public static boolean validate(TreeNode node, Integer max, Integer min) {
         if (node == null) {
             return true;
-        } else if (node.left != null) {
-            return validate(node.left, node.val, null);
-        } else if (node.right != null) {
-            return validate(node.right, null, node.val);
-        } else {
-            if (max != null) {
-                return node.val < max;
-            }
-            if (min != null) {
-                return node.val > min;
-            }
-            return true;
         }
+        boolean validLeft = true;
+        boolean validRight = true;
+        if (max != null && node.val >= max) {
+            return false;
+        }
+        if (min != null && node.val <= min) {
+            return false;
+        }
+
+        if (node.left != null) {
+            validLeft = validate(node.left, node.val, min);
+        }
+        if (node.right != null) {
+            validRight = validate(node.right, max, node.val);
+        }
+        return validLeft && validRight;
     }
 
     public static boolean isValidBST_Incomplete(TreeNode root) {
@@ -52,6 +56,11 @@ class ValidateBinarySearchTree {
                                       new TreeNode(1), new TreeNode(4,
                                                                     new TreeNode(3), new TreeNode(6)));
         System.out.println(isValidBST(root2));
+
+        TreeNode root3 = new TreeNode(5,
+                                      new TreeNode(4), new TreeNode(6,
+                                                                    new TreeNode(3), new TreeNode(7)));
+        System.out.println(isValidBST(root3));
     }
 
     static class TreeNode {
