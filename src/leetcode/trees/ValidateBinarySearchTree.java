@@ -9,6 +9,32 @@ class ValidateBinarySearchTree {
         if (root == null) {
             return true;
         }
+
+        return validate(root, null, null);
+    }
+
+    public static boolean validate(TreeNode node, Integer max, Integer min) {
+        if (node == null) {
+            return true;
+        } else if (node.left != null) {
+            return validate(node.left, node.val, null);
+        } else if (node.right != null) {
+            return validate(node.right, null, node.val);
+        } else {
+            if (max != null) {
+                return node.val < max;
+            }
+            if (min != null) {
+                return node.val > min;
+            }
+            return true;
+        }
+    }
+
+    public static boolean isValidBST_Incomplete(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
         boolean leftValid = root.left == null || root.val > root.left.val;
         boolean rightValid = root.right == null || root.val < root.right.val;
         boolean isLevelValid = leftValid && rightValid;
