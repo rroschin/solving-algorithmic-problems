@@ -5,7 +5,23 @@ package leetcode.trees;
  */
 class ValidateBinarySearchTree {
 
+    private static TreeNode prev = null;
+
     public static boolean isValidBST(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        if (isValidBST(root.left) == false) {
+            return false;
+        }
+        if (prev != null && prev.val >= root.val) {
+            return false;
+        }
+        prev = root;
+        return isValidBST(root.right);
+    }
+
+    public static boolean isValidBSTWithMinMax(TreeNode root) {
         if (root == null) {
             return true;
         }
