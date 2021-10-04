@@ -82,12 +82,9 @@ class BinaryTreeLevelOrderTraversal {
     }
 
     static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
 
         TreeNode(int val) {
             this.val = val;
