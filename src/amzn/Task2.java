@@ -1,6 +1,7 @@
 package amzn;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +10,54 @@ import java.util.Map;
 import static java.util.Arrays.asList;
 
 public class Task2 {
+
+    public static long getTotalImbalance(List<Integer> weight) {
+        long[] result = new long[1];
+
+        System.out.println(Arrays.deepToString(combinations(weight)));
+
+        return result[0];
+    }
+
+    private static void permutate(final List<Integer> weight, final int index, final List<Integer> perm, final long[] result) {
+        if (index == weight.size()) {
+            int[] mam = findMinAndMax(perm);
+            result[0] += mam[1] - mam[0];
+            return;
+        }
+        int[] mam = findMinAndMax(perm);
+        result[0] += mam[1] - mam[0];
+
+        final ArrayList<Integer> list1 = new ArrayList<>(perm);
+        permutate(weight, index + 1, list1, result);
+        final ArrayList<Integer> list2 = new ArrayList<>(perm);
+        list2.add(weight.get(index));
+        permutate(weight, index + 1, list2, result);
+    }
+
+    public static Integer[][] combinations(List<Integer> weight) {
+
+        List<Integer[]> combinationList = new ArrayList<>();
+        // Start i at 1, so that we do not include the empty set in the results
+        for (long i = 1; i < Math.pow(2, weight.size()); i++) {
+            List<Integer> list = new ArrayList<>();
+            for (int j = 0; j < weight.size(); j++) {
+                if ((i & (long) Math.pow(2, j)) > 0) {
+                    // Include j in set
+                    list.add(weight.get(j));
+                }
+            }
+            combinationList.add(list.toArray(new Integer[0]));
+        }
+        return combinationList.toArray(new Integer[0][0]);
+    }
+
+    private static int[] findMinAndMax(final List<Integer> list) {
+        if (list.isEmpty()) {
+            return new int[] { 0, 0 };
+        }
+        return new int[] { Collections.min(list), Collections.max(list) };
+    }
 
     public static long getTotalImbalance2For(List<Integer> weight) {
                 /*
@@ -69,7 +118,7 @@ public class Task2 {
         return totalImbalance;
     }
 
-    public static long getTotalImbalance(List<Integer> weight) {
+    public static long getTotalImbalanceNotCompleted(List<Integer> weight) {
         // Write your code here
         if (weight == null || weight.size() == 0 || weight.size() == 1) {
             return 0;
@@ -156,16 +205,16 @@ public class Task2 {
     }
 
     public static void main(String[] args) {
-        System.out.print(getTotalImbalance2ForWithMap(asList(3, 2, 3)) + " ?= "); //1+1+1 = 3
+        System.out.print(getTotalImbalance2For(asList(3, 2, 3)) + " ?= "); //1+1+1 = 3
         System.out.println(getTotalImbalance(asList(3, 2, 3))); //1+1+1 = 3
 
-        System.out.print(getTotalImbalance2ForWithMap(asList(1, 2, 3, 4)) + " ?= "); //1+2+3+1+2+1 = 10
+        System.out.print(getTotalImbalance2For(asList(1, 2, 3, 4)) + " ?= "); //1+2+3+1+2+1 = 10
         System.out.println(getTotalImbalance(asList(1, 2, 3, 4))); //1+2+3+1+2+1 = 10
 
-        System.out.print(getTotalImbalance2ForWithMap(asList(3, 2, 3, 4, 1)) + " ?= "); //1+1+2+3+1+2+3+1+2+3=20
+        System.out.print(getTotalImbalance2For(asList(3, 2, 3, 4, 1)) + " ?= "); //1+1+2+3+1+2+3+1+2+3=20
         System.out.println(getTotalImbalance(asList(3, 2, 3, 4, 1))); //1+1+2+3+1+2+3+1+2+3=20
 
-        System.out.print(getTotalImbalance2ForWithMap(asList(1, 2, 3)) + " ?= "); //1+2+1 = 4
+        System.out.print(getTotalImbalance2For(asList(1, 2, 3)) + " ?= "); //1+2+1 = 4
         System.out.println(getTotalImbalance(asList(1, 2, 3))); //1+2+1 = 4
     }
 }
