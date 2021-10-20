@@ -4,6 +4,7 @@ package leetcode.topinterviewquestionseasy.linkedlist;
  * Definition for singly-linked list.
  */
 class ReverseList {
+
     public static ListNode reverseListRecursive(ListNode head) {
         if (head == null || head.next == null) {
             return head;

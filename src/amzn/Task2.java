@@ -1,7 +1,6 @@
 package amzn;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +13,84 @@ public class Task2 {
     public static long getTotalImbalance(List<Integer> weight) {
         long[] result = new long[1];
 
-        System.out.println(Arrays.deepToString(combinations(weight)));
+        /*
+            w   = [1, 2, 3] -> 4
+                  [1, 2]    -> 2 - 1 = (1)
+                  [1, 2, 3] -> 3 - 1 = (2)
+                  [2, 3]    -> 3 - 2 = (1)
+                                       (4) <- sum
+
+            int sum = 0;
+
+            int[] sums = [0, 0, 0, 0, 0, 0]
+
+            w = [3, 1, 8, 3, 5, 2] -> ?
+           0:1  [3, 1]             -> 3-1 = (2)
+           sums[0] += 2 //[3, 1]
+           what is next? new min or new max? -> 8
+            -> new max -> shrink the window -> 0++
+           1:2     [1, 8]          -> 8-1 = (7) //repeat 7 several times
+           sums[1-1=0] += 7 //[3, 1, 8]
+           1:2
+           sums[1] += 7 //[1, 8]
+           what is next? new min or new max? -> 3
+            -> no changes -> still use the current value (7)
+           1:3
+           sums[1] += 7 //[1, 8, 3]
+           sums[1-1] += 7 //[3, 1, 8, 3]
+           what is next? new min or new max? -> 5
+            -> no changes -> still use the current value (7)
+           1:4
+           sums[1] += 7 //[1, 8, 3, 5]
+           sums[1-1] += 7 //[3, 1, 8, 3, 5]
+           what is next? new min or new max? -> 2
+           -> no changes -> still use the current value (7)
+           1:5
+           sums[1] += 7 //[1, 8, 3, 5, 2]
+           sums[1-1] += 7 //[3, 1, 8, 3, 5, 2]
+           what is next? new min or new max? -> END
+            -> END -> shrink the window -> 1++
+           2:2        [8]
+           what is next? new min or new max? -> 3
+            -> new min
+           2:3        [8, 3]        -> 8-3 = (5)
+           sums[2] += 5 //[8, 3]
+           updated min or max -> do not add to previous
+           what is next? new min or new max? -> 5
+            -> no changes -> still use the current value (5)
+           2:4
+           sums[2] += 5 //[8, 3, 5]
+           what is next? new min or new max? -> 2
+            -> new min
+           2:5        [8, 3, 5, 2]        -> 8-2 = (6)
+           sums[2] += 6 //[8, 3, 5, 2]
+           what is next? new min or new max? -> END
+            -> END -> shrink the window -> 2++
+           3:3           [3]
+           what is next? new min or new max? -> 5
+            -> new max
+           3:4           [3, 5]      -> 5-3 = (2)
+           sum[3] += 2
+           what is next? new min or new max? -> 2
+            -> new min == <update the prev sum>
+           4:5              [5, 2]      -> 5-2 = (3)
+           sum[4] += 3 //[5, 2]
+           sum[4-1] += 3 //[3, 5, 2]
+           what is next? new min or new max? -> END
+           5:5                  [2]
+
+           ---
+           sums = []
+
+
+         */
+
+
+        for (int i = 0; i < weight.size(); i++) {
+
+        }
+
+
 
         return result[0];
     }
