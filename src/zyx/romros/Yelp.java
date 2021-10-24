@@ -12,7 +12,7 @@ import static java.util.stream.Collectors.toMap;
 public class Yelp {
 
     public static void main(String[] args) {
-        //        System.out.println(Solution.findMostSimilarBusiness(10, List.of(new PositiveReview(1, 10),
+        //        System.out.println(FirstMissingPositive.findMostSimilarBusiness(10, List.of(new PositiveReview(1, 10),
         //                                                                        new PositiveReview(2, 10),
         //                                                                        new PositiveReview(1, 11),
         //                                                                        new PositiveReview(2, 11),
