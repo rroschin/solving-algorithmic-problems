@@ -42,7 +42,7 @@ public class Yelp {
                  ]
          */
 
-        System.out.println(Solution.findMostSimilarBusiness(1, List.of(
+        System.out.println(YelpSolution.findMostSimilarBusiness(1, List.of(
                 new PositiveReview(3, 44), //+
                 new PositiveReview(172, 44),
                 new PositiveReview(172, 114),
@@ -88,7 +88,7 @@ class PositiveReview {
     }
 }
 
-class Solution {
+class YelpSolution {
     /*
     Sample Input
         {
