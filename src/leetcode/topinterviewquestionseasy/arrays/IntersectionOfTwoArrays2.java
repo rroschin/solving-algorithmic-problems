@@ -74,4 +74,5 @@ class IntersectionOfTwoArrays2 {
                 int[] nums2 = { 1, 2 };
         System.out.println(Arrays.toString(intersectSorted(nums1, nums2)));
     }
+
 }

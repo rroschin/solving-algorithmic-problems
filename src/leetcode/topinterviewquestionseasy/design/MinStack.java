@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-class MinStack {
+public class MinStack {
 
     List<Integer> stack;
     int head = -1;
@@ -42,9 +42,7 @@ class MinStack {
     public int getMin() {
         return min;
     }
-}
 
-public class Main {
     public static void main(String[] args) {
         MinStack minStack = new MinStack();
         minStack.push(-2);
@@ -56,6 +54,7 @@ public class Main {
         System.out.println(minStack.getMin());
     }
 }
+
 
 /*
 class MinStackWithLinkedList {

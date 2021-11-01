@@ -4,7 +4,22 @@ import java.util.Arrays;
 
 class MergeSortedArray {
 
-    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+    public static void merge3(int[] nums1, int m, int[] nums2, int n) {
+        int i = m - 1, j = n - 1, k = m + n - 1;
+        while (k >= 0) {
+            if (i >= 0 && j >= 0) {
+                if (nums1[i] >= nums2[j])
+                    nums1[k--] = nums1[i--];
+                else
+                    nums1[k--] = nums2[j--];
+            } else if (i >= 0)
+                nums1[k--] = nums1[i--];
+            else if (j >= 0)
+                nums1[k--] = nums2[j--];
+        }
+    }
+
+    public static void merge2(int[] nums1, int m, int[] nums2, int n) {
         if (n == 0) {
             return;
         }
@@ -74,19 +89,16 @@ class MergeSortedArray {
     }
 
     public static void main(String[] args) {
-        int[] nums1 = { 0 };
-        int m = 0;
-        int[] nums2 = { 1 };
-        int n = 1;
-        merge(nums1, m, nums2, n);
+        int[] nums1 = { 1,2,7,8,0,0,0 };
+        merge(nums1, 4, new int[] { 2,5,6 }, 3);
         System.out.println(Arrays.toString(nums1));
 
-//        int[] nums1 = { 4, 5, 6, 0, 0, 0 };
-//        int m = 3;
-//        int[] nums2 = { 1, 2, 3 };
-//        int n = 3;
-//        merge(nums1, m, nums2, n);
-//        System.out.println(Arrays.toString(nums1));
+        //        int[] nums1 = { 4, 5, 6, 0, 0, 0 };
+        //        int m = 3;
+        //        int[] nums2 = { 1, 2, 3 };
+        //        int n = 3;
+        //        merge(nums1, m, nums2, n);
+        //        System.out.println(Arrays.toString(nums1));
 
         //        int[] nums1 = { 1, 2, 3, 0, 0, 0 };
         //        int m = 3;
@@ -94,5 +106,32 @@ class MergeSortedArray {
         //        int n = 3;
         //        merge(nums1, m, nums2, n);
         //        System.out.println(Arrays.toString(nums1));
+    }
+
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        if (nums2.length == 0) {
+            return;
+        }
+
+        int p1 = m - 1; //3
+        int p2 = n - 1; //2
+        int i = nums1.length - 1; //6
+
+        while (i >= 0) {
+            if (p1 < 0) {
+                nums1[i] = nums2[p2];
+                p2--;
+            } else if (p2 < 0) {
+                nums1[i] = nums1[p1];
+                p1--;
+            } else if (nums1[p1] >= nums2[p2]) { //8 & 6, 7 & 6, 2 & 6
+                nums1[i] = nums1[p1]; //[7,8]
+                p1--; //2, 1
+            } else {
+                nums1[i] = nums2[p2];
+                p2--;
+            }
+            i--;
+        }
     }
 }
