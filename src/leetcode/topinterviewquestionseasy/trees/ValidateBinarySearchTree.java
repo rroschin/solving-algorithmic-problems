@@ -1,5 +1,7 @@
 package leetcode.topinterviewquestionseasy.trees;
 
+import leetcode.TreeNode;
+
 /**
  * Definition for a binary tree node.
  */
@@ -51,47 +53,51 @@ class ValidateBinarySearchTree {
         return validLeft && validRight;
     }
 
-    public static boolean isValidBST_Incomplete(TreeNode root) {
-        if (root == null) {
+    public static boolean isBst(TreeNode root) { //5
+        return checkNode(root, null, null);
+    }
+
+    static boolean checkNode(TreeNode node, Integer min, Integer max) {
+        if (node == null) {
             return true;
         }
-        boolean leftValid = root.left == null || root.val > root.left.val;
-        boolean rightValid = root.right == null || root.val < root.right.val;
-        boolean isLevelValid = leftValid && rightValid;
-        if (!isLevelValid) {
+        if (max != null && node.val > max) {
             return false;
         }
-        return isValidBST(root.left) && isValidBST(root.right);
+        if (min != null && node.val < min) {
+            return false;
+        }
+
+
+        if (!checkNode(node.left, min, node.val)) {
+            return false;
+        }
+
+        if (!checkNode(node.right, node.val, max)) {
+            return false;
+        }
+
+        return true;
     }
 
     public static void main(String[] args) {
+        TreeNode root = new TreeNode(5, new TreeNode(4), new TreeNode(6, new TreeNode(3), new TreeNode(7)));
+        System.out.println(isValidBSTWithMinMax(root));
+
         TreeNode root1 = new TreeNode(2, new TreeNode(1), new TreeNode(3));
-        System.out.println(isValidBST(root1));
+        System.out.println(isValidBST(root1) + " vs " + isBst(root1));
 
-        TreeNode root2 = new TreeNode(5,
-                                      new TreeNode(1), new TreeNode(4,
-                                                                    new TreeNode(3), new TreeNode(6)));
-        System.out.println(isValidBST(root2));
+        TreeNode root2 = new TreeNode(5, new TreeNode(1), new TreeNode(4, new TreeNode(3), new TreeNode(6)));
+        System.out.println(isValidBST(root2) + " vs " + isBst(root2));
 
-        TreeNode root3 = new TreeNode(5,
-                                      new TreeNode(4), new TreeNode(6,
-                                                                    new TreeNode(3), new TreeNode(7)));
-        System.out.println(isValidBST(root3));
+        TreeNode root3 = new TreeNode(5, new TreeNode(4), new TreeNode(6, new TreeNode(3), new TreeNode(7)));
+        System.out.println(isValidBST(root3) + " vs " + isBst(root3));
+
+        TreeNode root4 = new TreeNode(5, new TreeNode(3, new TreeNode(6), new TreeNode(8)), new TreeNode(7, new TreeNode(6), new TreeNode(8)));
+        System.out.println(isValidBST(root4) + " vs " + isBst(root4));
+
+        TreeNode root5 = new TreeNode(2, new TreeNode(3), new TreeNode(3));
+        System.out.println(isValidBST(root5) + " vs " + isBst(root5));
     }
 
-    static class TreeNode {
-        public int val;
-        public TreeNode left;
-        public TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 }
